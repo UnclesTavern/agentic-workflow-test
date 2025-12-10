@@ -19,6 +19,21 @@ This directory contains **custom GitHub Copilot agent definitions** and workflow
 └── README.md                 # This file
 ```
 
+## Agent File Format
+
+Each agent file **must** include YAML frontmatter to be discoverable in GitHub Copilot Agent HQ:
+
+```yaml
+---
+name: agent-name              # Unique agent identifier
+description: Brief description of the agent's purpose  # Required!
+target: github-copilot        # Where the agent can be used
+tools: ["*"]                  # Tools available to the agent
+---
+```
+
+After the frontmatter, the markdown content describes the agent's detailed instructions, role, and behavior.
+
 ## Quick Reference
 
 ### Agent Sequence
@@ -84,9 +99,18 @@ All agents are currently **placeholders** ready for concrete task definitions. T
 
 ### Adding New Agents
 1. Create a new `<agent-name>.md` file in this directory
-2. Follow the structure of existing agent definitions
-3. Update the workflow orchestrator to include the new agent
-4. Document handoff protocols
+2. Add YAML frontmatter with required fields:
+   ```yaml
+   ---
+   name: agent-name
+   description: Clear description of what the agent does
+   target: github-copilot
+   tools: ["*"]
+   ---
+   ```
+3. Follow the structure of existing agent definitions
+4. Update the workflow orchestrator to include the new agent
+5. Document handoff protocols
 
 ### Customizing Existing Agents
 1. Edit the relevant agent `.md` file
