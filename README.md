@@ -99,6 +99,46 @@ Currently, all agents are placeholders ready to be configured with concrete task
 ✓ Example workflow demonstration
 ✓ Extensible architecture
 
+## Example Implementation: Calculator Module
+
+This repository includes a complete example implementation showcasing the agent workflow system:
+
+### Calculator Feature
+
+A production-ready calculator module implementing basic arithmetic operations:
+
+- **Implementation**: Python module with `Calculator` class and functional interface
+- **Operations**: Addition, subtraction, multiplication, division
+- **Type Support**: Integers, floats, and mixed types
+- **Error Handling**: Division by zero protection and invalid operation detection
+- **Test Coverage**: 100% coverage with 38 comprehensive tests
+- **Documentation**: Complete user guide and API reference
+
+### Documentation
+
+- **[Calculator User Guide](docs/CALCULATOR.md)** - Complete guide with examples and use cases
+- **[API Reference](docs/API_REFERENCE.md)** - Detailed API documentation
+- **[Test Report](TEST_REPORT.md)** - Test results and coverage analysis
+
+### Quick Example
+
+```python
+from src.calculator import Calculator, calculate
+
+# Class-based approach
+calc = Calculator()
+result = calc.add(10, 5)  # 15
+
+# Functional approach
+result = calculate('multiply', 7, 6)  # 42
+```
+
+This implementation demonstrates the complete workflow cycle:
+1. **Develop Agent**: Implemented the calculator module
+2. **Test Agent**: Created comprehensive test suite (38 tests, 100% coverage)
+3. **Document Agent**: Generated user guide and API reference
+4. **Review Agent**: Ready for final review
+
 ## Future Enhancements
 
 - Integration with CI/CD pipelines
