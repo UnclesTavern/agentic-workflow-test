@@ -4,11 +4,11 @@ Repository for testing chaining of agents and handovers
 
 ## Overview
 
-This repository demonstrates a complete agent workflow system with four specialized agents that work together in a coordinated pipeline:
+This repository demonstrates a complete agent workflow system with four specialized **custom GitHub Copilot agents** that work together in a coordinated pipeline:
 
 **develop → test → document → review**
 
-Each agent is independent and specialized for a specific task, allowing for a robust, iterative development workflow.
+Each agent is a custom agent definition stored in `.github/agents/` that can be invoked through the GitHub Copilot agent system. Each agent is independent and specialized for a specific task, allowing for a robust, iterative development workflow.
 
 ## Agent Workflow
 
@@ -38,28 +38,30 @@ Each agent is independent and specialized for a specific task, allowing for a ro
 
 ## Quick Start
 
-### Using Agent Handovers
+### Using Custom Agent Handovers
 
-Orchestrate the workflow by invoking agents and having them hand off to the next agent in sequence:
+These agents are **custom GitHub Copilot agents** defined in `.github/agents/`. Orchestrate the workflow by invoking these custom agents through GitHub Copilot's agent system, having each agent hand off to the next in sequence:
 
 ```
-@develop-agent implement [your feature]
+Invoke custom agent: develop-agent to implement [your feature]
   ↓ (develops code)
-  ↓ (hands off to test-agent)
-@test-agent test the implementation
+  ↓ (provides context for next agent)
+Invoke custom agent: test-agent to test the implementation
   ↓ (tests code)
-  ↓ (hands off to document-agent)
-@document-agent document the feature
+  ↓ (provides context for next agent)
+Invoke custom agent: document-agent to document the feature
   ↓ (creates docs)
-  ↓ (hands off to review-agent)
-@review-agent review all work
+  ↓ (provides context for next agent)
+Invoke custom agent: review-agent to review all work
   ↓ (approves or requests changes)
 ```
 
-Each agent:
-1. Completes its specialized task
-2. Provides context and artifacts
-3. Explicitly hands off to the next agent with @mention
+Each custom agent:
+1. Is invoked through GitHub Copilot's custom agent system
+2. Completes its specialized task
+3. Provides context and artifacts for the next agent
+
+**Note**: These are custom agent definitions, not standard GitHub @mentions. They must be invoked through GitHub Copilot, not directly in issues or PRs.
 
 See [Workflow Orchestrator](.github/agents/workflow-orchestrator.md) for detailed handover examples.
 

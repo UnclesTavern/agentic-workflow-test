@@ -1,6 +1,10 @@
 # Agent Workflow Orchestrator
 
-This document describes how to chain the custom agents together to create a complete development workflow.
+This document describes how to chain the custom GitHub Copilot agents together to create a complete development workflow.
+
+## What Are These Agents?
+
+These are **custom GitHub Copilot agent definitions** stored in `.github/agents/`. They are NOT standard GitHub @mentions that work in issues or PRs. Instead, they are specialized agent prompts that can be invoked through GitHub Copilot's custom agent system.
 
 ## Workflow Overview
 
@@ -36,9 +40,11 @@ The agent workflow follows this sequence:
 
 ### Agent Handover Orchestration
 
-The workflow is orchestrated through **agent handovers**, where each agent completes its work and explicitly hands off to the next agent in the chain.
+The workflow is orchestrated through **custom agent handovers** within the GitHub Copilot agent system. These are custom agents defined in `.github/agents/` that can be invoked through GitHub Copilot.
 
-**How it works**: When an agent completes its task, it mentions the next agent using `@agent-name` syntax. This triggers the next agent to begin its work with the provided context. The mention acts as both a notification and a handoff of responsibility, ensuring clear transitions between workflow stages.
+**How it works**: These agents are custom GitHub Copilot agents (not standard GitHub @mentions). When working with GitHub Copilot, you invoke each custom agent in sequence. Each agent completes its specialized task and provides output that informs the next agent in the workflow. The handoff happens by explicitly invoking the next agent with the context from the previous agent's work.
+
+**Important**: These `@agent-name` references in the examples below represent custom GitHub Copilot agents defined in this repository's `.github/agents/` directory. They are invoked through the GitHub Copilot custom agent system, not through standard GitHub issue/PR mentions.
 
 #### Step 1: Invoke develop-agent
 ```

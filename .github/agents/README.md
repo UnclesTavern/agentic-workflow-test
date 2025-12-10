@@ -2,7 +2,9 @@
 
 ## Overview
 
-This directory contains the custom agent definitions and workflow orchestration documentation for the agentic workflow test system.
+This directory contains **custom GitHub Copilot agent definitions** and workflow orchestration documentation for the agentic workflow test system.
+
+**Important**: These are custom agent definitions for use with GitHub Copilot's agent system, not standard GitHub @mentions. They must be invoked through GitHub Copilot, not directly in GitHub issues or pull requests.
 
 ## Structure
 
@@ -33,15 +35,17 @@ This directory contains the custom agent definitions and workflow orchestration 
 
 ## Using the Agents
 
-### Agent Handover Orchestration
-Invoke agents using @mentions and have each agent hand off to the next:
+### Custom Agent Invocation
+These are **custom GitHub Copilot agents**. Invoke them through GitHub Copilot's custom agent system:
 
 ```
-@develop-agent [task] → completes and hands off to @test-agent
-@test-agent [task] → completes and hands off to @document-agent
-@document-agent [task] → completes and hands off to @review-agent
-@review-agent [task] → approves or requests changes from @develop-agent
+Custom agent: develop-agent → completes task → provides context
+Custom agent: test-agent → completes task → provides context
+Custom agent: document-agent → completes task → provides context
+Custom agent: review-agent → approves or requests changes
 ```
+
+The `@agent-name` syntax in documentation is shorthand representing these custom agents, but they are invoked through GitHub Copilot, not as standard GitHub mentions.
 
 ### Individual Agent Use
 Each agent can be invoked independently with specific instructions following the format in their definition file.
