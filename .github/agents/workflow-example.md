@@ -163,12 +163,12 @@ and properly documented. Approved for merge.
 
 ## Workflow Summary
 
-| Agent | Duration | Status | Issues Found |
-|-------|----------|--------|--------------|
-| develop-agent | 1 iteration | ✓ Complete | 0 |
-| test-agent | 1 iteration | ✓ Complete | 0 |
-| document-agent | 1 iteration | ✓ Complete | 0 |
-| review-agent | 1 iteration | ✓ Approved | 0 critical |
+| Agent | Iterations | Status | Issues Found |
+|-------|------------|--------|--------------|
+| develop-agent | 1 | ✓ Complete | 0 |
+| test-agent | 1 | ✓ Complete | 0 |
+| document-agent | 1 | ✓ Complete | 0 |
+| review-agent | 1 | ✓ Approved | 0 critical |
 
 **Total Workflow Iterations**: 1
 **Outcome**: Approved

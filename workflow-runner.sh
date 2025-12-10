@@ -13,7 +13,6 @@ NC='\033[0m' # No Color
 
 # Configuration
 AGENTS_DIR=".github/agents"
-LOG_FILE="/tmp/workflow-$(date +%Y%m%d-%H%M%S).log"
 
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}Agent Workflow Runner${NC}"
