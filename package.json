@@ -1,0 +1,17 @@
+{
+  "name": "agentic-workflow-test",
+  "version": "1.0.0",
+  "description": "Repository for testing chaining of agents and handovers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:verbose": "jest --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
