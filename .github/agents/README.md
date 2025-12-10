@@ -33,14 +33,21 @@ This directory contains the custom agent definitions and workflow orchestration 
 
 ## Using the Agents
 
+### Agent Handover Orchestration
+Invoke agents using @mentions and have each agent hand off to the next:
+
+```
+@develop-agent [task] → completes and hands off to @test-agent
+@test-agent [task] → completes and hands off to @document-agent
+@document-agent [task] → completes and hands off to @review-agent
+@review-agent [task] → approves or requests changes from @develop-agent
+```
+
 ### Individual Agent Use
-Each agent can be invoked with specific instructions following the format in their definition file.
+Each agent can be invoked independently with specific instructions following the format in their definition file.
 
 ### Workflow Chain
-Use the orchestrator guide to chain agents together for a complete development cycle.
-
-### Automation
-The `/workflow-runner.sh` script in the repository root demonstrates the workflow chain.
+Use the orchestrator guide to understand handoff protocols and context passing between agents.
 
 ## Agent Characteristics
 

@@ -38,22 +38,30 @@ Each agent is independent and specialized for a specific task, allowing for a ro
 
 ## Quick Start
 
-### Using the Workflow Runner
+### Using Agent Handovers
 
-Run the demonstration workflow:
+Orchestrate the workflow by invoking agents and having them hand off to the next agent in sequence:
 
-```bash
-./workflow-runner.sh "Your task description"
+```
+@develop-agent implement [your feature]
+  ↓ (develops code)
+  ↓ (hands off to test-agent)
+@test-agent test the implementation
+  ↓ (tests code)
+  ↓ (hands off to document-agent)
+@document-agent document the feature
+  ↓ (creates docs)
+  ↓ (hands off to review-agent)
+@review-agent review all work
+  ↓ (approves or requests changes)
 ```
 
-### Manual Agent Invocation
+Each agent:
+1. Completes its specialized task
+2. Provides context and artifacts
+3. Explicitly hands off to the next agent with @mention
 
-Invoke agents sequentially, passing context between them:
-
-1. Start with develop-agent
-2. Pass output to test-agent
-3. Pass results to document-agent
-4. Final review by review-agent
+See [Workflow Orchestrator](.github/agents/workflow-orchestrator.md) for detailed handover examples.
 
 ## Documentation
 
@@ -82,7 +90,7 @@ Currently, all agents are placeholders ready to be configured with concrete task
 ## Features
 
 ✓ Four specialized agents with clear roles
-✓ Sequential workflow with handoffs between agents
+✓ Agent handover orchestration with explicit @mentions
 ✓ Independent agent operation
 ✓ Review feedback loop for iterations
 ✓ Comprehensive documentation

@@ -34,38 +34,102 @@ The agent workflow follows this sequence:
 
 ## How to Use the Workflow
 
-### Method 1: Sequential Agent Invocation
-Call each agent in sequence, passing context from previous agents:
+### Agent Handover Orchestration
 
-1. **Start with develop-agent**:
-   ```
-   Task: [Your feature request]
-   Context: Starting new workflow
-   ```
+The workflow is orchestrated through **agent handovers**, where each agent completes its work and explicitly hands off to the next agent in the chain.
 
-2. **Invoke test-agent**:
-   ```
-   Task: Test the implementation
-   Context: [Summary from develop-agent]
-   ```
+#### Step 1: Invoke develop-agent
+```
+@develop-agent please implement [feature description]
 
-3. **Invoke document-agent**:
-   ```
-   Task: Document the feature
-   Context: [Summaries from develop-agent and test-agent]
-   ```
+Context: New feature request
+Requirements: [detailed requirements]
+```
 
-4. **Invoke review-agent**:
-   ```
-   Task: Review all work
-   Context: [Summaries from all previous agents]
-   ```
+The develop-agent will:
+- Implement the requested feature
+- Document what was changed
+- Hand off to test-agent with a summary
 
-### Method 2: Automated Workflow Script
-Use the provided workflow script to automatically chain agents:
+#### Step 2: develop-agent hands off to test-agent
+The develop-agent completes with:
+```
+@test-agent please test the implementation
 
-```bash
-./workflow-runner.sh "Implement feature X"
+Context: Implemented [feature] in the following files:
+- src/feature.js
+- lib/utils.js
+
+Changes made:
+- Added feature X with methods A, B, C
+- Updated utility Y to support Z
+
+Please verify: [test scenarios]
+```
+
+#### Step 3: test-agent hands off to document-agent
+The test-agent completes with:
+```
+@document-agent please document the feature
+
+Context: Testing complete for [feature]
+
+Test Results:
+- 15/15 tests passed (100%)
+- Coverage: 95%
+- All edge cases validated
+
+Please document:
+- Feature X API and usage
+- Methods A, B, C specifications
+- Known limitations: [if any]
+```
+
+#### Step 4: document-agent hands off to review-agent
+The document-agent completes with:
+```
+@review-agent please review the complete workflow
+
+Context: Documentation complete for [feature]
+
+Documentation created:
+- API reference in docs/api.md
+- Usage examples in examples/usage.js
+- Updated README.md
+
+All artifacts ready for review:
+- Code implementation (develop-agent)
+- Test results (test-agent)
+- Documentation (document-agent)
+```
+
+#### Step 5: review-agent completes or restarts workflow
+The review-agent either:
+
+**APPROVED**:
+```
+STATUS: ✓ APPROVED
+
+Quality Assessment:
+- Code: Excellent
+- Tests: Very Good
+- Documentation: Excellent
+
+Workflow complete. Ready for merge.
+```
+
+**CHANGES REQUESTED**:
+```
+STATUS: ⚠ CHANGES REQUESTED
+
+@develop-agent please address the following:
+
+Issues found:
+1. Missing input validation for parameter X
+2. Edge case not handled: [specific case]
+
+Priority: High
+Please reimplement and restart workflow.
 ```
 
 ## Workflow States
