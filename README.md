@@ -40,6 +40,13 @@ Each agent is a custom agent definition stored in `.github/agents/` that can be 
 
 ### Using Custom Agent Handovers
 
+Simply start with this prompt, do not save it in a prompt-file, could not make that work (yet)
+```
+@develop-agent Task: {Your special task to be used}
+- Remember to follow the orchestration workflow as described in the repository
+- Run subagents for each phase
+```
+
 These agents are **custom GitHub Copilot agents** defined in `.github/agents/`. Orchestrate the workflow by invoking these custom agents through GitHub Copilot's agent system, having each agent hand off to the next in sequence:
 
 ```
@@ -119,3 +126,4 @@ When adding concrete tasks to agents:
 ## License
 
 See [LICENSE](LICENSE) file for details.
+
