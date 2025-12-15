@@ -1,0 +1,62 @@
+[95m
+[95mStarting discovery in 1 files.[0m
+[95mDiscovery found 56 tests in 256ms.[0m
+[95mRunning tests.[0m
+Loaded 19 functions from Scan-LANDevices.ps1
+::error::[-] 1. Subnet Detection Tests.1.3 Local Subnet Detection.Should detect local subnets without errors 48ms (47ms|2ms)[0m
+::group::Message[0m
+Expected no exception to be thrown, but an exception "Failed to get local subnets: The term 'Get-NetAdapter' is not recognized as a name of a cmdlet, function, script file, or executable program.[0m
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again." was thrown from /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:108 char:25[0m
++             { $result = Get-LocalSubnets -ErrorAction Stop } | Should …[0m
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.[0m
+at { $result = Get-LocalSubnets -ErrorAction Stop } | Should -Not -Throw, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:108[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:108[0m
+::endgroup::[0m
+[31;1mWrite-Error: [0m/home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:112[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m 112 | [0m             $result = [36;1mGet-LocalSubnets[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m                       ~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mFailed to get local subnets: The term 'Get-NetAdapter' is not recognized[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mas a name of a cmdlet, function, script file, or executable program.[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mCheck the spelling of the name, or if a path was included, verify that[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mthe path is correct and try again.[0m
+Scanning 2 hosts in subnet 127.0.0.0/30...
+Found 1 alive hosts in subnet 127.0.0.0/30
+Scanning 2 hosts in subnet 127.0.0.0/30...
+Found 1 alive hosts in subnet 127.0.0.0/30
+::error::[-] 2. Network Scanning Tests.2.2 Parallel Scanning.Should return array of alive hosts 542ms (539ms|2ms)[0m
+::group::Message[0m
+Expected the value to have type [array] or any of its subtypes, but got '127.0.0.1' with type [string].[0m
+at $result | Should -BeOfType [System.Array], /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:157[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:157[0m
+::endgroup::[0m
+::error::[-] 3. Device Discovery Tests.3.1 Hostname Resolution.Should handle unresolvable IP gracefully 20ms (18ms|1ms)[0m
+::group::Message[0m
+Expected a value, but got $null or empty.[0m
+at $result | Should -Not -BeNullOrEmpty, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:178[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:178[0m
+::endgroup::[0m
+::error::[-] 3. Device Discovery Tests.3.2 MAC Address Retrieval.Should return string result 44ms (43ms|2ms)[0m
+::group::Message[0m
+Expected the value to have type [string] or any of its subtypes, but got $null with type $null.[0m
+at $result | Should -BeOfType [string], /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:191[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:191[0m
+::endgroup::[0m
+::error::[-] 3. Device Discovery Tests.3.3 Port Scanning.Should return array of port objects 13ms (12ms|1ms)[0m
+::group::Message[0m
+Expected the value to have type [array] or any of its subtypes, but got $null with type $null.[0m
+at $result | Should -BeOfType [System.Array], /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:204[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:204[0m
+::endgroup::[0m
+::error::[-] 3. Device Discovery Tests.3.3 Port Scanning.Should detect common open ports on localhost 31ms (29ms|2ms)[0m
+::group::Message[0m
+Expected a value, but got $null or empty.[0m
+at $result | Should -Not -BeNullOrEmpty, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:211[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:211[0m
+::endgroup::[0m
+::error::[-] 3. Device Discovery Tests.3.4 HTTP Device Info.Should return hashtable structure 13ms (11ms|1ms)[0m
+::group::Message[0m
+Expected the value to have type [hashtable] or any of its subtypes, but got $null with type $null.[0m
+at $result | Should -BeOfType [hashtable], /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:224[0m
+at <ScriptBlock>, /home/runner/work/agentic-workflow-test/agentic-workflow-test/Scan-LANDevices.Tests.ps1:224[0m
+::endgroup::[0m
